@@ -212,7 +212,18 @@ def ask_model(client: OpenAI, tool: dict, page: dict, source: str) -> dict:
     i, j = raw.find("{"), raw.rfind("}")
     if i != -1 and j > i:
         raw = raw[i:j + 1]
-    return json.loads(raw)
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as exc:
+        # 把模型实际返回的东西打出来。不这么做，"解析失败"四个字什么也说明不了，
+        # 只能靠猜——而猜过两轮都是错的。
+        reasoning = getattr(choice.message, "reasoning_content", None) or ""
+        raise ValueError(
+            f"返回内容不是 JSON（{exc}）| finish_reason={choice.finish_reason} "
+            f"| content 长度={len(choice.message.content or '')} "
+            f"| reasoning 长度={len(reasoning)} | usage={getattr(resp, 'usage', None)}\n"
+            f"    content 开头: {(choice.message.content or '')[:300]!r}"
+        ) from None
 
 
 # ── 落盘 ────────────────────────────────────────────────────────────────────
