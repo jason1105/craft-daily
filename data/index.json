@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-08-29",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "流式输入成本：读最新 result 别逐条相加",
+    "scenario": "在 streaming input mode 下跑 Agent，一个 query() 里有多轮用户输入，还可能出现 /clear 等重置操作。这时需要准确统计整次调用成本，而不是把每个 result 的 usage 累加起来。",
+    "level": "进阶",
+    "file": "tips/2026-08-29-claude-code-track-cost-and-usage.md",
+    "source_title": "Track cost and usage",
+    "source_url": "https://code.claude.com/docs/en/agent-sdk/cost-tracking.md"
+  }
+]

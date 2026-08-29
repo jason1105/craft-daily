@@ -1,0 +1,23 @@
+[
+  {
+    "id": "claude-code",
+    "name": "Claude Code",
+    "accent": "#c96442",
+    "blurb": "Anthropic 的终端 AI 编程工具",
+    "home": "https://code.claude.com/docs/en/overview"
+  },
+  {
+    "id": "codex",
+    "name": "Codex CLI",
+    "accent": "#10a37f",
+    "blurb": "OpenAI 的终端编程 agent",
+    "home": "https://developers.openai.com/codex"
+  },
+  {
+    "id": "hermes-studio",
+    "name": "Hermes Studio",
+    "accent": "#7c6cf0",
+    "blurb": "Hermes Agent 的控制台与桌面端",
+    "home": "https://github.com/EKKOLearnAI/hermes-studio"
+  }
+]
