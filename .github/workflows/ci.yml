@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile Python
+        run: |
+          python -m py_compile $(git ls-files '*.py')
+          echo "py_compile 通过"
+
+      - name: Validate workflow YAML + tools.yml
+        run: |
+          python - <<'PY'
+          import glob, yaml, sys
+          ok = True
+          for f in glob.glob('.github/workflows/*.yml') + ['tools.yml']:
+              try:
+                  yaml.safe_load(open(f, encoding='utf-8'))
+                  print('OK  ', f)
+              except Exception as e:
+                  print('BAD ', f, e); ok = False
+          sys.exit(0 if ok else 1)
+          PY
+
+      - name: Registry sanity — 每个工具都要有事实源
+        run: |
+          python - <<'PY'
+          import yaml, sys
+          tools = yaml.safe_load(open('tools.yml', encoding='utf-8'))['tools']
+          ok = True
+          for t in tools:
+              src = t.get('source', {})
+              if src.get('type') not in ('llms_index', 'github_repo'):
+                  print('BAD  未知事实源类型:', t.get('id'), src.get('type')); ok = False
+              elif src['type'] == 'llms_index' and not src.get('url'):
+                  print('BAD  缺 url:', t['id']); ok = False
+              elif src['type'] == 'github_repo' and not src.get('repo'):
+                  print('BAD  缺 repo:', t['id']); ok = False
+              else:
+                  print('OK  ', t['id'], '<-', src['type'])
+          sys.exit(0 if ok else 1)
+          PY

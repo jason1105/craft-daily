@@ -1,0 +1,96 @@
+name: Daily Craft Tip
+
+on:
+  schedule:
+    - cron: '0 1 * * 1-5'   # 工作日 UTC 01:00（北京时间 09:00）
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write        # 失败告警需要开 issue
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  brew:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests pyyaml openai
+
+      - name: Generate today's tip
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/generate_tip.py
+
+      - name: Commit via PR
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add tips/ data/
+          if git diff --cached --quiet; then
+            echo "没有新内容需要提交。"
+          else
+            git commit -m "tip: $(date -u +%Y-%m-%d) 每日一招 [skip ci]"
+            # 默认分支受保护：bot 不直推 main，走 PR 自动合并
+            git fetch origin main --depth=1 -q
+            BRANCH="bot/tip-$(date -u +%Y%m%d-%H%M%S)"
+            git push -u origin "HEAD:$BRANCH"
+            export GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+            gh pr create --base main --head "$BRANCH" \
+              --title "$(git log -1 --pretty=%s)" \
+              --body "由 ${{ github.workflow }} 自动生成。每条 tip 均通过原文取证校验。"
+            gh pr merge "$BRANCH" --squash --delete-branch
+          fi
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Notify on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="⚠️ 工作流 ${{ github.workflow }} 运行失败"
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="[${{ github.workflow }}]($RUN_URL) 于 $(date -u '+%Y-%m-%d %H:%M UTC') 失败（分支 ${{ github.ref_name }}，触发 ${{ github.event_name }}）。请查看日志。"
+          EXISTING=$(gh issue list --state open --search "in:title $TITLE" --json number,title --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            gh label create ci-failure --color d73a4a --description "自动化工作流失败告警" 2>/dev/null || true
+            gh issue create --title "$TITLE" --body "$BODY" --label ci-failure 2>/dev/null || gh issue create --title "$TITLE" --body "$BODY"
+          fi

@@ -1,0 +1,52 @@
+# craft-daily 工具注册表
+# 加一个新工具 = 在这里加一段，不需要改任何代码。
+#
+# source.type:
+#   llms_index  — 官方提供 llms.txt（专供 LLM 的文档索引），自动发现全部页面
+#       only_path  只保留 URL 含该片段的页（例：过滤掉多语言副本）
+#       match_any  标题/描述/URL 命中任一关键词才保留（例：从混合索引里挑出本工具的页）
+#   github_repo — 读公开仓库的文档与源码
+#       优先用 GitHub API 列目录树；接口不可用时回落到 fallback_files 显式清单
+
+tools:
+  - id: claude-code
+    name: Claude Code
+    accent: "#c96442"
+    blurb: Anthropic 的终端 AI 编程工具
+    home: https://code.claude.com/docs/en/overview
+    source:
+      type: llms_index
+      url: https://code.claude.com/docs/llms.txt
+      only_path: /docs/en/        # 官方索引含 11 种语言，只取英文
+
+  - id: codex
+    name: Codex CLI
+    accent: "#10a37f"
+    blurb: OpenAI 的终端编程 agent
+    home: https://developers.openai.com/codex
+    source:
+      type: llms_index
+      url: https://developers.openai.com/codex/llms.txt
+      # 该索引混入了 ChatGPT 通用文档，按关键词挑出与 Codex 相关的页
+      match_any: ["codex", "agent-configuration/", "cli", "sandbox", "mcp", "hooks"]
+
+  - id: hermes-studio
+    name: Hermes Studio
+    accent: "#7c6cf0"
+    blurb: Hermes Agent 的控制台与桌面端
+    home: https://github.com/EKKOLearnAI/hermes-studio
+    source:
+      type: github_repo
+      repo: EKKOLearnAI/hermes-studio
+      branch: main
+      include: ["README.md", "README_zh.md", "ARCHITECTURE.md", "DEVELOPMENT.md", "AGENTS.md", "docs/"]
+      ext: [".md"]
+      # API 不可用时的兜底（这些文件已逐个确认存在）
+      fallback_files:
+        - README.md
+        - README_zh.md
+        - ARCHITECTURE.md
+        - DEVELOPMENT.md
+        - AGENTS.md
+        - docs/docker.md
+        - docs/voice-dialogue.md

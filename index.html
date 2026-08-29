@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>craft-daily · 每日工具一招</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fbfaf7; --card:#fff; --sunk:#f3f1ec;
+    --ink:#1c1a17; --mid:#5f5a52; --dim:#948d81; --line:#e5e1d8;
+    --accent:#8a6a3b;
+    --ok:#2f7d4f; --ok-bg:rgba(47,125,79,.10);
+    --do:#b8791f; --do-bg:rgba(184,121,31,.12);
+    --r:12px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#14130f; --card:#1c1a16; --sunk:#232019;
+      --ink:#efeae0; --mid:#a8a094; --dim:#797266; --line:#2e2a22;
+      --accent:#d0a86a;
+      --ok:#59c286; --ok-bg:rgba(89,194,134,.14);
+      --do:#e0a94a; --do-bg:rgba(224,169,74,.14);
+    }
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,"PingFang SC",sans-serif;
+    line-height:1.7;padding:0 20px 80px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+
+  header{padding:52px 0 26px;border-bottom:1px solid var(--line);margin-bottom:28px}
+  .brand{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+  h1{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.9rem;letter-spacing:-.01em}
+  .sub{color:var(--dim);font-size:.86rem}
+  .tagline{color:var(--mid);font-size:.92rem;margin-top:.5rem;max-width:52ch}
+
+  /* 今日卡片 */
+  .today{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    border-left:3px solid var(--tool,var(--accent));
+    padding:26px 28px;margin-bottom:14px;
+    box-shadow:0 1px 2px rgba(0,0,0,.03),0 8px 24px rgba(0,0,0,.04);
+  }
+  .crumb{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem}
+  .badge{
+    font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:500;
+    padding:.18rem .55rem;border-radius:5px;
+    background:var(--tool,var(--accent));color:#fff;
+  }
+  .lv{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--dim);
+      border:1px solid var(--line);padding:.14rem .5rem;border-radius:5px}
+  .date{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--dim);margin-left:auto}
+  .tip-title{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.5rem;
+             line-height:1.3;margin-bottom:1rem;text-wrap:balance}
+
+  .sec{margin:1.1rem 0}
+  .sec-h{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;
+         text-transform:uppercase;color:var(--tool,var(--accent));margin-bottom:.35rem;font-weight:500}
+  .md p{margin:.5rem 0}
+  .md ul,.md ol{padding-left:1.3rem;margin:.5rem 0}
+  .md li{margin:.25rem 0}
+  .md code{font-family:"JetBrains Mono",monospace;font-size:.85em;
+           background:var(--sunk);padding:.12em .38em;border-radius:4px}
+  .md pre{background:var(--sunk);border:1px solid var(--line);border-radius:8px;
+          padding:14px 16px;overflow-x:auto;margin:.7rem 0}
+  .md pre code{background:none;padding:0;font-size:.82rem;line-height:1.6}
+  .md blockquote{border-left:2px solid var(--line);padding-left:.9rem;color:var(--mid);margin:.5rem 0}
+  .md a{color:var(--tool,var(--accent))}
+  .md h1,.md h2{display:none}          /* 正文里的标题由外层结构接管 */
+
+  .evidence{background:var(--sunk);border-radius:8px;padding:12px 16px;margin-top:.4rem}
+  .evidence blockquote{border-left:2px solid var(--tool,var(--accent));padding-left:.8rem;
+                       color:var(--mid);font-size:.9rem;margin:0}
+  .src{font-size:.76rem;color:var(--dim);margin-top:.5rem}
+  .src a{color:var(--mid)}
+
+  /* 实践追踪 */
+  .track{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+         padding:16px 20px;margin-bottom:34px}
+  .track-h{font-size:.78rem;color:var(--dim);margin-bottom:.6rem}
+  .states{display:flex;gap:.5rem;flex-wrap:wrap}
+  .st{
+    font-family:inherit;font-size:.82rem;cursor:pointer;
+    padding:.4rem .9rem;border-radius:20px;border:1px solid var(--line);
+    background:transparent;color:var(--mid);transition:all .15s;
+  }
+  .st:hover{border-color:var(--dim);color:var(--ink)}
+  .st.on[data-s="todo"]{background:var(--do-bg);border-color:transparent;color:var(--do);font-weight:500}
+  .st.on[data-s="known"]{background:var(--sunk);border-color:transparent;color:var(--ink);font-weight:500}
+  .st.on[data-s="used"]{background:var(--ok-bg);border-color:transparent;color:var(--ok);font-weight:500}
+  .note{margin-top:.7rem;display:none}
+  .note.show{display:block}
+  .note textarea{
+    width:100%;min-height:52px;resize:vertical;
+    font-family:inherit;font-size:.86rem;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.55rem .7rem;
+  }
+  .note textarea:focus{outline:2px solid var(--tool,var(--accent));outline-offset:1px}
+  .note-h{font-size:.74rem;color:var(--dim);margin-bottom:.3rem}
+
+  /* 历史 */
+  .hist-h{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:1rem}
+  .hist-h h2{font-family:"Newsreader",serif;font-weight:600;font-size:1.1rem}
+  .filters{display:flex;gap:.4rem;margin-left:auto;flex-wrap:wrap}
+  .f{font-family:"JetBrains Mono",monospace;font-size:.7rem;cursor:pointer;
+     padding:.2rem .55rem;border-radius:5px;border:1px solid var(--line);
+     background:transparent;color:var(--dim)}
+  .f.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .hlist{display:flex;flex-direction:column;gap:.5rem}
+  .h{
+    background:var(--card);border:1px solid var(--line);border-radius:9px;
+    border-left:3px solid var(--tool,var(--line));
+    padding:.7rem 1rem;cursor:pointer;transition:border-color .15s,transform .12s;
+  }
+  .h:hover{transform:translateX(2px)}
+  .h-top{display:flex;align-items:center;gap:.55rem}
+  .h-d{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--dim);flex-shrink:0}
+  .h-t{font-size:.92rem;font-weight:500;flex:1;min-width:0;
+       overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .h-s{font-size:.66rem;padding:.1rem .4rem;border-radius:4px;flex-shrink:0}
+  .h-s.used{background:var(--ok-bg);color:var(--ok)}
+  .h-s.known{background:var(--sunk);color:var(--mid)}
+  .h-s.todo{background:var(--do-bg);color:var(--do)}
+  .h-body{display:none;margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--line)}
+  .h.open .h-body{display:block}
+
+  .empty{text-align:center;padding:44px 20px;color:var(--dim)}
+  .empty .big{font-size:1.05rem;color:var(--mid);margin-bottom:.4rem}
+  .spin{width:26px;height:26px;border:2px solid var(--line);border-top-color:var(--accent);
+        border-radius:50%;animation:sp .8s linear infinite;margin:30px auto}
+  @keyframes sp{to{transform:rotate(360deg)}}
+
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+         font-size:.76rem;color:var(--dim);display:flex;justify-content:space-between;
+         gap:.6rem;flex-wrap:wrap}
+  footer a{color:var(--mid)}
+  @media (max-width:560px){
+    .today{padding:20px 18px}
+    .date{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <h1>每日一招</h1>
+      <span class="sub">craft-daily</span>
+    </div>
+    <p class="tagline">每个工作日一条工具用法，全部出自官方文档与源码，每条都附可核对的原文依据。</p>
+  </header>
+
+  <main id="today"><div class="spin"></div></main>
+
+  <section class="hist-h" id="histHead" hidden>
+    <h2>往期</h2>
+    <div class="filters" id="filters"></div>
+  </section>
+  <div class="hlist" id="hist"></div>
+
+  <footer>
+    <span>素材来自各工具官方文档与公开源码 · 取证失败当日不发</span>
+    <a href="https://github.com/jason1105/craft-daily">源码</a>
+  </footer>
+</div>
+
+<script>
+/* 极简 markdown 渲染器：只覆盖本仓库 tip 用到的语法。
+   自带而非引 CDN —— 外部脚本一挂整页就白，不值得为这点功能冒险。 */
+function mdEscape(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function mdInline(s){
+  return mdEscape(s)
+    .replace(/`([^`]+)`/g,(m,c)=>'<code>'+c+'</code>')
+    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+}
+function mdRender(src){
+  const lines=String(src??'').split('\n');
+  const out=[]; let i=0;
+  const flushList=(items,tag)=>out.push('<'+tag+'>'+items.map(x=>'<li>'+mdInline(x)+'</li>').join('')+'</'+tag+'>');
+  while(i<lines.length){
+    const line=lines[i];
+    if(/^```/.test(line)){                                   // 代码块
+      const lang=line.slice(3).trim(); const buf=[]; i++;
+      while(i<lines.length && !/^```/.test(lines[i])){buf.push(lines[i]); i++;}
+      i++;
+      out.push('<pre><code'+(lang?' class="language-'+mdEscape(lang)+'"':'')+'>'+mdEscape(buf.join('\n'))+'</code></pre>');
+      continue;
+    }
+    if(/^\s*$/.test(line)){i++; continue;}                    // 空行
+    if(/^#{1,6}\s/.test(line)){                              // 标题
+      const lv=line.match(/^#+/)[0].length;
+      out.push('<h'+lv+'>'+mdInline(line.replace(/^#+\s*/,''))+'</h'+lv+'>'); i++; continue;
+    }
+    if(/^>\s?/.test(line)){                                  // 引用
+      const buf=[];
+      while(i<lines.length && /^>\s?/.test(lines[i])){buf.push(lines[i].replace(/^>\s?/,'')); i++;}
+      out.push('<blockquote><p>'+mdInline(buf.join(' '))+'</p></blockquote>'); continue;
+    }
+    if(/^\s*[-*]\s+/.test(line)){                            // 无序列表
+      const buf=[];
+      while(i<lines.length && /^\s*[-*]\s+/.test(lines[i])){buf.push(lines[i].replace(/^\s*[-*]\s+/,'')); i++;}
+      flushList(buf,'ul'); continue;
+    }
+    if(/^\s*\d+\.\s+/.test(line)){                          // 有序列表
+      const buf=[];
+      while(i<lines.length && /^\s*\d+\.\s+/.test(lines[i])){buf.push(lines[i].replace(/^\s*\d+\.\s+/,'')); i++;}
+      flushList(buf,'ol'); continue;
+    }
+    const buf=[];                                            // 段落
+    while(i<lines.length && !/^\s*$/.test(lines[i]) && !/^```/.test(lines[i])
+          && !/^#{1,6}\s/.test(lines[i]) && !/^>\s?/.test(lines[i])
+          && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+\.\s+/.test(lines[i])){
+      buf.push(lines[i]); i++;
+    }
+    out.push('<p>'+mdInline(buf.join(' '))+'</p>');
+  }
+  return out.join('\n');
+}
+</script>
+<script>
+const KEY = 'craft-daily-practice';
+let INDEX = [], TOOLS = {}, filter = null;
+
+const getP = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } };
+const setP = m => { try { localStorage.setItem(KEY, JSON.stringify(m)); } catch {} };
+const esc = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const fmtDate = d => { const x=new Date(d+'T12:00:00'); return x.toLocaleDateString('zh-CN',{month:'long',day:'numeric'}); };
+
+/* 从 markdown 正文里切出各段落，正文是唯一真相源 */
+function splitTip(md){
+  const body = md.replace(/^---[\s\S]*?\n---\n/, '');
+  const grab = h => {
+    const re = new RegExp('##\\s*' + h + '\\s*\\n([\\s\\S]*?)(?=\\n##\\s|$)');
+    const m = body.match(re);
+    return m ? m[1].trim() : '';
+  };
+  return {
+    scenario: grab('什么时候用得上'),
+    steps:    grab('怎么做'),
+    why:      grab('为什么'),
+    // 原文依据段尾部带一行「来源：…」，页面下方已单独展示，这里去重
+    evidence: grab('原文依据').replace(/\n*^来源：.*$/m, '').trim(),
+  };
+}
+
+function renderToday(item, parts){
+  const t = TOOLS[item.tool] || {};
+  document.getElementById('today').innerHTML = `
+    <article class="today" style="--tool:${esc(t.accent||'')}">
+      <div class="crumb">
+        <span class="badge">${esc(item.tool_name)}</span>
+        <span class="lv">${esc(item.level||'进阶')}</span>
+        <span class="date">${esc(fmtDate(item.date))}</span>
+      </div>
+      <h2 class="tip-title">${esc(item.title)}</h2>
+      <div class="sec"><div class="sec-h">什么时候用得上</div><div class="md">${mdRender(parts.scenario)}</div></div>
+      <div class="sec"><div class="sec-h">怎么做</div><div class="md">${mdRender(parts.steps)}</div></div>
+      <div class="sec"><div class="sec-h">为什么</div><div class="md">${mdRender(parts.why)}</div></div>
+      <div class="sec">
+        <div class="sec-h">原文依据</div>
+        <div class="evidence md">${mdRender(parts.evidence)}</div>
+        <div class="src">来源：<a href="${esc(item.source_url)}" target="_blank" rel="noopener">${esc(item.source_title)}</a></div>
+      </div>
+    </article>
+    <div class="track">
+      <div class="track-h">学完之后</div>
+      <div class="states">
+        <button class="st" data-s="todo"  onclick="mark('${esc(item.date)}','todo')">待实践</button>
+        <button class="st" data-s="known" onclick="mark('${esc(item.date)}','known')">已掌握</button>
+        <button class="st" data-s="used"  onclick="mark('${esc(item.date)}','used')">已用上</button>
+      </div>
+      <div class="note" id="noteBox">
+        <div class="note-h">用在哪了？（只存在这台设备的浏览器里）</div>
+        <textarea id="noteTxt" placeholder="例：给 craft-daily 的工作流加了失败告警"
+          onblur="saveNote('${esc(item.date)}')"></textarea>
+      </div>
+    </div>`;
+  syncTrack(item.date);
+}
+
+function syncTrack(date){
+  const p = getP()[date] || {};
+  document.querySelectorAll('.st').forEach(b =>
+    b.classList.toggle('on', b.dataset.s === p.state));
+  const box = document.getElementById('noteBox');
+  const txt = document.getElementById('noteTxt');
+  if (box) box.classList.toggle('show', p.state === 'used');
+  if (txt && p.note != null) txt.value = p.note;
+}
+
+function mark(date, state){
+  const m = getP();
+  const cur = m[date] || {};
+  m[date] = { ...cur, state: cur.state === state ? null : state };
+  setP(m);
+  syncTrack(date);
+  renderHist();
+}
+
+function saveNote(date){
+  const m = getP();
+  m[date] = { ...(m[date]||{}), note: document.getElementById('noteTxt').value };
+  setP(m);
+}
+
+const LABEL = { todo:'待实践', known:'已掌握', used:'已用上' };
+
+function renderHist(){
+  const p = getP();
+  const list = INDEX.slice(1).filter(i => !filter || i.tool === filter);
+  const el = document.getElementById('hist');
+  document.getElementById('histHead').hidden = INDEX.length < 2;
+  if (!list.length){ el.innerHTML = ''; return; }
+  el.innerHTML = list.map(i => {
+    const t = TOOLS[i.tool] || {};
+    const st = (p[i.date]||{}).state;
+    return `<article class="h" style="--tool:${esc(t.accent||'')}" data-file="${esc(i.file)}" onclick="toggleHist(this)">
+      <div class="h-top">
+        <span class="h-d">${esc(i.date.slice(5))}</span>
+        <span class="h-t">${esc(i.title)}</span>
+        ${st?`<span class="h-s ${st}">${LABEL[st]}</span>`:''}
+        <span class="h-d">${esc(i.tool_name)}</span>
+      </div>
+      <div class="h-body md"></div>
+    </article>`;
+  }).join('');
+}
+
+async function toggleHist(el){
+  el.classList.toggle('open');
+  const body = el.querySelector('.h-body');
+  if (el.classList.contains('open') && !body.dataset.loaded){
+    body.innerHTML = '<p style="color:var(--dim)">载入中…</p>';
+    try{
+      const md = await (await fetch(el.dataset.file + '?_=' + Date.now())).text();
+      const p = splitTip(md);
+      body.innerHTML = mdRender(
+        (p.scenario?p.scenario+'\n\n':'') + p.steps + '\n\n' + p.why +
+        '\n\n**原文依据**\n\n' + p.evidence);
+      body.dataset.loaded = '1';
+    }catch{ body.innerHTML = '<p style="color:var(--dim)">载入失败</p>'; }
+  }
+}
+
+function renderFilters(){
+  const ids = [...new Set(INDEX.map(i => i.tool))];
+  document.getElementById('filters').innerHTML =
+    `<button class="f on" onclick="setFilter(null,this)">全部</button>` +
+    ids.map(id => `<button class="f" onclick="setFilter('${esc(id)}',this)">${esc(TOOLS[id]?.name||id)}</button>`).join('');
+}
+function setFilter(id, btn){
+  filter = id;
+  document.querySelectorAll('.f').forEach(b => b.classList.toggle('on', b === btn));
+  renderHist();
+}
+
+(async () => {
+  try{
+    const [idx, tools] = await Promise.all([
+      fetch('data/index.json?_='+Date.now()).then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch('data/tools.json?_='+Date.now()).then(r => r.ok ? r.json() : []).catch(() => []),
+    ]);
+    INDEX = Array.isArray(idx) ? idx : [];
+    (Array.isArray(tools)?tools:[]).forEach(t => TOOLS[t.id] = t);
+
+    if (!INDEX.length){
+      document.getElementById('today').innerHTML =
+        `<div class="empty"><div class="big">还没有第一条</div>
+         <div>每个工作日 UTC 01:00 自动生成；也可以到 Actions 里手动触发一次。</div></div>`;
+      return;
+    }
+    const first = INDEX[0];
+    const md = await (await fetch(first.file + '?_=' + Date.now())).text();
+    renderToday(first, splitTip(md));
+    renderFilters();
+    renderHist();
+  }catch(e){
+    document.getElementById('today').innerHTML =
+      `<div class="empty"><div class="big">载入失败</div><div>${esc(e.message)}</div></div>`;
+  }
+})();
+</script>
+</body>
+</html>
