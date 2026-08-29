@@ -41,8 +41,10 @@ MAX_SOURCE_CHARS = 9000       # 单页喂给模型的上限（越长，思考链
 MIN_EVIDENCE_CHARS = 24       # 太短的"摘录"没有取证意义
 MAX_ATTEMPTS = 3
 # 思考模型的 reasoning_content 与正文共用 completion 预算，留足空间，
-# 否则长原文下推理占满额度、正文返回空。
-MAX_TOKENS = 8192
+# 否则长原文下推理占满额度、正文返回空。8192 在长页（如 Agent SDK overview）
+# 下仍会被 reasoning 占满（实测 reasoning 5293 + 正文 826），提到 16384 后
+# 三种代表性页面全部通过、正文余量充足。详见诊断任务 t_b1cc5fa8。
+MAX_TOKENS = 16384
 UA = {"User-Agent": "craft-daily/1.0 (+https://github.com/jason1105/craft-daily)"}
 
 
@@ -208,6 +210,11 @@ def ask_model(client: OpenAI, tool: dict, page: dict, source: str) -> dict:
 
     # 思考模型的推理链与正文共用 completion 预算，推理占满时正文为空
     if not raw:
+        # finish_reason=length 基本可以断定 reasoning 吃光了预算（不是 API 故障）。
+        # 理由：正文若正常结束应是 stop；到 length 说明生成被预算截断——而预算大头
+        # 几乎总是被思考模型的 reasoning 吃掉，正文连一个 token 都没轮到。
+        if choice.finish_reason == "length":
+            raise _diag("模型返回空正文 —— Reasoning 吃满预算（finish_reason=length）")
         raise _diag("模型返回空正文")
 
     return _parse_tip_json(raw, _diag)
