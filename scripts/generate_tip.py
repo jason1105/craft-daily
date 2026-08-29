@@ -40,6 +40,9 @@ GH_TOKEN = os.environ.get("GH_TOKEN", "")
 MAX_SOURCE_CHARS = 14000      # 单页喂给模型的上限
 MIN_EVIDENCE_CHARS = 24       # 太短的"摘录"没有取证意义
 MAX_ATTEMPTS = 3
+# 思考模型的 reasoning_content 与正文共用 completion 预算，留足空间，
+# 否则长原文下推理占满额度、正文返回空。
+MAX_TOKENS = 8192
 UA = {"User-Agent": "craft-daily/1.0 (+https://github.com/jason1105/craft-daily)"}
 
 
@@ -187,10 +190,22 @@ def ask_model(client: OpenAI, tool: dict, page: dict, source: str) -> dict:
     )
     resp = client.chat.completions.create(
         model=MODEL,
-        max_tokens=2048,
+        max_tokens=MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
     )
-    raw = (resp.choices[0].message.content or "").strip()
+    choice = resp.choices[0]
+    raw = (choice.message.content or "").strip()
+
+    # 诊断信息：思考模型（如 deepseek-v4-flash）的 reasoning 也吃 completion 预算，
+    # 预算不够时 content 会是空的。把这些数字打出来，下次失败一眼能看出是哪种情况。
+    if not raw:
+        reasoning = getattr(choice.message, "reasoning_content", None) or ""
+        usage = getattr(resp, "usage", None)
+        raise ValueError(
+            f"模型返回空正文 —— finish_reason={choice.finish_reason}, "
+            f"reasoning 长度={len(reasoning)}, max_tokens={MAX_TOKENS}, usage={usage}"
+        )
+
     m = re.search(r"```(?:json)?\s*(.+?)```", raw, re.S)
     if m:
         raw = m.group(1).strip()
@@ -306,7 +321,7 @@ def main() -> None:
         try:
             candidate = ask_model(client, tool, page, source)
         except Exception as exc:
-            print(f"  第 {attempt} 次：调用/解析失败 —— {exc}")
+            print(f"  第 {attempt} 次：调用/解析失败 —— {type(exc).__name__}: {exc}")
             continue
 
         if str(candidate.get("title", "")).strip().upper().startswith("SKIP"):
