@@ -37,7 +37,7 @@ BASE_URL = (os.environ.get("LLM_BASE_URL") or "https://api.deepseek.com").rstrip
 API_KEY = os.environ.get("LLM_API_KEY") or os.environ.get("OPENROUTER_API_KEY", "")
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
 
-MAX_SOURCE_CHARS = 14000      # 单页喂给模型的上限
+MAX_SOURCE_CHARS = 9000       # 单页喂给模型的上限（越长，思考链越容易占满预算）
 MIN_EVIDENCE_CHARS = 24       # 太短的"摘录"没有取证意义
 MAX_ATTEMPTS = 3
 # 思考模型的 reasoning_content 与正文共用 completion 预算，留足空间，
@@ -196,34 +196,53 @@ def ask_model(client: OpenAI, tool: dict, page: dict, source: str) -> dict:
     choice = resp.choices[0]
     raw = (choice.message.content or "").strip()
 
-    # 诊断信息：思考模型（如 deepseek-v4-flash）的 reasoning 也吃 completion 预算，
-    # 预算不够时 content 会是空的。把这些数字打出来，下次失败一眼能看出是哪种情况。
-    if not raw:
+    def _diag(msg):
         reasoning = getattr(choice.message, "reasoning_content", None) or ""
-        usage = getattr(resp, "usage", None)
-        raise ValueError(
-            f"模型返回空正文 —— finish_reason={choice.finish_reason}, "
-            f"reasoning 长度={len(reasoning)}, max_tokens={MAX_TOKENS}, usage={usage}"
+        return ValueError(
+            f"{msg} | finish_reason={choice.finish_reason} "
+            f"| content 长度={len(choice.message.content or '')} "
+            f"| reasoning 长度={len(reasoning)} | max_tokens={MAX_TOKENS} "
+            f"| usage={getattr(resp, 'usage', None)}\n"
+            f"    content 开头: {(choice.message.content or '')[:240]!r}"
         )
 
-    m = re.search(r"```(?:json)?\s*(.+?)```", raw, re.S)
-    if m:
-        raw = m.group(1).strip()
-    i, j = raw.find("{"), raw.rfind("}")
-    if i != -1 and j > i:
-        raw = raw[i:j + 1]
+    # 思考模型的推理链与正文共用 completion 预算，推理占满时正文为空
+    if not raw:
+        raise _diag("模型返回空正文")
+
+    return _parse_tip_json(raw, _diag)
+
+
+def _parse_tip_json(raw: str, diag):
+    """从模型返回里取出 JSON。
+
+    注意：tip 的 steps 字段本身就含 markdown 代码块，所以**不能**用非贪婪正则去找
+    ``` 围栏——那会匹配到嵌套在 steps 里的内层代码块，把外层 JSON 撕碎，
+    得到一段带转义引号的片段（`{\"hooks\"...`），解析必然失败。
+    正确顺序：先整体解析 → 再剥「包裹整个响应」的围栏（首尾锚定+贪婪）→ 最后取最外层花括号。
+    """
+    s = raw.strip()
+
     try:
-        return json.loads(raw)
-    except json.JSONDecodeError as exc:
-        # 把模型实际返回的东西打出来。不这么做，"解析失败"四个字什么也说明不了，
-        # 只能靠猜——而猜过两轮都是错的。
-        reasoning = getattr(choice.message, "reasoning_content", None) or ""
-        raise ValueError(
-            f"返回内容不是 JSON（{exc}）| finish_reason={choice.finish_reason} "
-            f"| content 长度={len(choice.message.content or '')} "
-            f"| reasoning 长度={len(reasoning)} | usage={getattr(resp, 'usage', None)}\n"
-            f"    content 开头: {(choice.message.content or '')[:300]!r}"
-        ) from None
+        return json.loads(s)
+    except json.JSONDecodeError:
+        pass
+
+    fenced = re.match(r"^```(?:json)?\s*\n(.*)\n\s*```$", s, re.S)
+    if fenced:
+        try:
+            return json.loads(fenced.group(1).strip())
+        except json.JSONDecodeError:
+            pass
+
+    i, j = s.find("{"), s.rfind("}")      # 最外层，不是最近的一对
+    if i != -1 and j > i:
+        try:
+            return json.loads(s[i:j + 1])
+        except json.JSONDecodeError as exc:
+            raise diag(f"提取出的 JSON 仍无法解析（{exc}）") from None
+
+    raise diag("返回内容里找不到 JSON 对象")
 
 
 # ── 落盘 ────────────────────────────────────────────────────────────────────
