@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-08-31",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "CLI 与插件用同一扫描器，放心进 CI",
+    "scenario": "当你想在 CI 或 commit 前自动跑安全扫描，而不是只坐在桌面插件里手动点扫描时。",
+    "level": "进阶",
+    "file": "tips/2026-08-31-codex-codex-security.md",
+    "source_title": "Codex Security",
+    "source_url": "https://learn.chatgpt.com/docs/security.md"
+  },
+  {
     "date": "2026-08-29",
     "tool": "claude-code",
     "tool_name": "Claude Code",
