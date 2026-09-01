@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-01",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "局部更新用 PATCH，不必回传全图",
+    "scenario": "当你只改了画布 viewport 或 workspace，想通过 API 更新 workflow，而不想把整个 nodes/edges 再传一遍。",
+    "level": "进阶",
+    "file": "tips/2026-09-01-hermes-studio-docs-workflow-md.md",
+    "source_title": "docs/workflow.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/workflow.md"
+  },
+  {
     "date": "2026-08-31",
     "tool": "codex",
     "tool_name": "Codex CLI",
