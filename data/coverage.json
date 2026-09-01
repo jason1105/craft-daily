@@ -4,5 +4,8 @@
   ],
   "codex": [
     "https://learn.chatgpt.com/docs/security.md"
+  ],
+  "hermes-studio": [
+    "EKKOLearnAI/hermes-studio:docs/workflow.md"
   ]
 }
