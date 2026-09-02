@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-02",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "用 /subtask 开子任务，自动继承上下文",
+    "scenario": "Claude 已经陪你讨论了很久，你又想让它去补测试或查一个侧线问题；不想把前面的背景再重讲一遍。",
+    "level": "进阶",
+    "file": "tips/2026-09-02-claude-code-week-33-august-10-14-2026.md",
+    "source_title": "Week 33 · August 10–14, 2026",
+    "source_url": "https://code.claude.com/docs/en/whats-new/2026-w33.md"
+  },
+  {
     "date": "2026-09-01",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
