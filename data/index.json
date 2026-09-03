@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-03",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "复用 TEAM_GUIDE.md 作为 Codex 指令",
+    "scenario": "仓库已有 TEAM_GUIDE.md，但 Codex 默认不会读取它，任务中团队约定没生效。把该文件名加入 fallback 列表，Codex 就会把它当成指令文件加载。",
+    "level": "进阶",
+    "file": "tips/2026-09-03-codex-custom-instructions-with-agents-md.md",
+    "source_title": "Custom instructions with AGENTS.md",
+    "source_url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md.md"
+  },
+  {
     "date": "2026-09-02",
     "tool": "claude-code",
     "tool_name": "Claude Code",
