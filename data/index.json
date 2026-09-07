@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-07",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "矩阵 target 产物校验开关勿删",
+    "scenario": "你在改一个 workflow；它里面的每个 matrix target 都有自己的 expected artifact list。提交前先确认产物校验配置仍然保留。",
+    "level": "进阶",
+    "file": "tips/2026-09-07-hermes-studio-docs-harness-pr-review-md.md",
+    "source_title": "docs/harness/pr-review.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/harness/pr-review.md"
+  },
+  {
     "date": "2026-09-03",
     "tool": "codex",
     "tool_name": "Codex CLI",
