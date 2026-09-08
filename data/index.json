@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-08",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "Bash(rm *) 拦 rm，别禁用 Bash",
+    "scenario": "你在用 Claude Agent SDK 做自动化，开了 `bypassPermissions` 让 Claude 放手执行，但不能让它碰 `rm *`。用带作用域的 deny 规则把它拦在权限模式判定之前，Bash 其余命令照常可用。",
+    "level": "进阶",
+    "file": "tips/2026-09-08-claude-code-configure-permissions.md",
+    "source_title": "Configure permissions",
+    "source_url": "https://code.claude.com/docs/en/agent-sdk/permissions.md"
+  },
+  {
     "date": "2026-09-07",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
