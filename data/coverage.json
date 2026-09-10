@@ -11,6 +11,7 @@
   ],
   "hermes-studio": [
     "EKKOLearnAI/hermes-studio:docs/workflow.md",
-    "EKKOLearnAI/hermes-studio:docs/harness/pr-review.md"
+    "EKKOLearnAI/hermes-studio:docs/harness/pr-review.md",
+    "EKKOLearnAI/hermes-studio:docs/harness/validation.md"
   ]
 }
