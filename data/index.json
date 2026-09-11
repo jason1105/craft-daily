@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-11",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "抢在 8/14 前把 auto mode 设为默认",
+    "scenario": "你在 Pro/Max/Team 计划上，8 月 14 日起 auto mode 会成为新会话的默认权限模式。与其那天被一次性切换提示打断，不如现在就把默认模式锁定成你选定的那个。",
+    "level": "进阶",
+    "file": "tips/2026-09-11-claude-code-week-32-august-3-7-2026.md",
+    "source_title": "Week 32 · August 3–7, 2026",
+    "source_url": "https://code.claude.com/docs/en/whats-new/2026-w32.md"
+  },
+  {
     "date": "2026-09-10",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
