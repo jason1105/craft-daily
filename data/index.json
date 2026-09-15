@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-15",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "用新 mobile run 重新绑定设备",
+    "scenario": "部署了把 calendar/reminder consent 绑定到认证发起设备的变更后，你要做验收。若直接 resume 旧会话或从 web 触发，设备目标不会转移，测试会误判。",
+    "level": "进阶",
+    "file": "tips/2026-09-15-hermes-studio-docs-chat-chain-changes-2026-09-05-mobile-device.md",
+    "source_title": "docs/chat-chain-changes/2026-09-05-mobile-device-target.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/chat-chain-changes/2026-09-05-mobile-device-target.md"
+  },
+  {
     "date": "2026-09-14",
     "tool": "codex",
     "tool_name": "Codex CLI",
