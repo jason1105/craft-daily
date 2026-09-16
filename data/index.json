@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-16",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "开网关提示头，按 agent 归因流量",
+    "scenario": "你们把 Claude Code 的流量统一收敛到自建 LLM 网关做审计、限流和计费，但网关只看得到模型名与 token 数，分不清一条请求来自主 agent、sub-agent 还是上下文压缩流程。",
+    "level": "进阶",
+    "file": "tips/2026-09-16-claude-code-claude-code-changelog.md",
+    "source_title": "Claude Code changelog",
+    "source_url": "https://code.claude.com/docs/en/changelog.md"
+  },
+  {
     "date": "2026-09-15",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
