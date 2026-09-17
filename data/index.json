@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-17",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "CLI 装完插件必须新开会话",
+    "scenario": "你在 Codex CLI 里用插件浏览器装好了一个带 skills / MCP tools 的插件，回到当前会话直接让它干活，却发现这些能力和工具完全不存在，第一反应是怀疑安装失败或权限没配好。",
+    "level": "进阶",
+    "file": "tips/2026-09-17-codex-plugins.md",
+    "source_title": "Plugins",
+    "source_url": "https://learn.chatgpt.com/docs/plugins.md"
+  },
+  {
     "date": "2026-09-16",
     "tool": "claude-code",
     "tool_name": "Claude Code",
