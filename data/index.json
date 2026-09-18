@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-18",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "启动不写配置，显式选默认才落盘",
+    "scenario": "你看到 opencode-free 已在启动时列出，于是以为默认模型会随 Studio 启动自动持久化；但重启后发现默认模型仍是旧的。要在默认模型选择里显式选它，才会写配置。",
+    "level": "进阶",
+    "file": "tips/2026-09-18-hermes-studio-docs-opencode-free-md.md",
+    "source_title": "docs/opencode-free.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/opencode-free.md"
+  },
+  {
     "date": "2026-09-17",
     "tool": "codex",
     "tool_name": "Codex CLI",
