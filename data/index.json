@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-21",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "个人覆盖：settings.local.json",
+    "scenario": "你在团队仓库里要改 Claude Code 设置，但不想改共享配置、也不想影响自己其他项目。此时应把覆盖写到项目本地文件，而不是 `.claude/settings.json` 或 `~/.claude/settings.json`。",
+    "level": "进阶",
+    "file": "tips/2026-09-21-claude-code-settings-files-and-precedence.md",
+    "source_title": "Settings files and precedence",
+    "source_url": "https://code.claude.com/docs/en/settings.md"
+  },
+  {
     "date": "2026-09-18",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
