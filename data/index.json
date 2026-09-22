@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-22",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "GitLab 项目在环境创建时选",
+    "scenario": "你刚把团队 GitLab 接到 Codex cloud，连接后却找不到仓库选择入口。别在连接阶段反复找，GitLab 的项目选择在创建 environment 时完成。",
+    "level": "进阶",
+    "file": "tips/2026-09-22-codex-codex-cloud.md",
+    "source_title": "Codex cloud",
+    "source_url": "https://learn.chatgpt.com/docs/cloud.md"
+  },
+  {
     "date": "2026-09-21",
     "tool": "claude-code",
     "tool_name": "Claude Code",
