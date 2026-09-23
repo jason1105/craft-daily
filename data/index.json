@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-23",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "群任务卡排障：按 task_plan 快照定位",
+    "scenario": "群聊里多个 Agent 并发生成任务卡，卡片不更新或分页/重连后消失。你打开 tool trace 排查，但 Tool trace visibility does not hide cards，按 trace 找会跑偏。",
+    "level": "专家",
+    "file": "tips/2026-09-23-hermes-studio-docs-chat-chain-changes-2026-09-17-group-task-pl.md",
+    "source_title": "docs/chat-chain-changes/2026-09-17-group-task-plan-cards.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/chat-chain-changes/2026-09-17-group-task-plan-cards.md"
+  },
+  {
     "date": "2026-09-22",
     "tool": "codex",
     "tool_name": "Codex CLI",
