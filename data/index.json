@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-24",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "GHES App 权限和事件需手动补",
+    "scenario": "你在 GHES 上已经创建过 Claude 的 GitHub App，后来需要新增权限或 webhook 事件。旧安装不会自动获得这些变更。",
+    "level": "专家",
+    "file": "tips/2026-09-24-claude-code-claude-code-with-github-enterprise-server.md",
+    "source_title": "Claude Code with GitHub Enterprise Server",
+    "source_url": "https://code.claude.com/docs/en/github-enterprise-server.md"
+  },
+  {
     "date": "2026-09-23",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
