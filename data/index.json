@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-28",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "注入的 MCP Server：禁用而非删除",
+    "scenario": "你想让 Studio 启动时注入到某个 Ekko Profile 的 MCP server 长期保持关闭状态，于是在页面上把它删掉，结果这个改动在后续启动中并不可靠。",
+    "level": "进阶",
+    "file": "tips/2026-09-28-hermes-studio-docs-planning-ekko-agent-configuration-pages-md.md",
+    "source_title": "docs/planning/ekko-agent-configuration-pages.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/planning/ekko-agent-configuration-pages.md"
+  },
+  {
     "date": "2026-09-25",
     "tool": "codex",
     "tool_name": "Codex CLI",
