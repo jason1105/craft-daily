@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-29",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "外部编辑器编辑提示时自动带入上一轮回复",
+    "scenario": "你要在默认编辑器里大幅改写提示，且希望新提示能直接引用 Claude 上一轮回复中的具体内容时。手动复制上一轮回复既慢又容易漏掉错误信息或代码片段。",
+    "level": "进阶",
+    "file": "tips/2026-09-29-claude-code-interactive-mode.md",
+    "source_title": "Interactive mode",
+    "source_url": "https://code.claude.com/docs/en/interactive-mode.md"
+  },
+  {
     "date": "2026-09-28",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
