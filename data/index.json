@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-30",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "Codex 审查与评论分 job 隔离权限",
+    "scenario": "你希望 Codex 自动审 PR，但不放心让执行 Codex 的 job 持有可写 token。把执行和评论拆成两个 job，只让评论步骤拿 issues 和 pull-requests 写权限。",
+    "level": "进阶",
+    "file": "tips/2026-09-30-codex-codex-github-action.md",
+    "source_title": "Codex GitHub Action",
+    "source_url": "https://learn.chatgpt.com/docs/github-action.md"
+  },
+  {
     "date": "2026-09-29",
     "tool": "claude-code",
     "tool_name": "Claude Code",
