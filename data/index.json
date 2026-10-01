@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-01",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "JEV 出站请求按完整 UTF-8 字节数限流",
+    "scenario": "你在为 JEV provider 加旁路调用，请求里会带中文或工具证据，既怕超限又不想悄悄删内容。此时应先对完整 request 做 UTF-8 字节校验，而不是只检查 state。",
+    "level": "进阶",
+    "file": "tips/2026-10-01-hermes-studio-docs-planning-jev-sidecar-pr0-design-md.md",
+    "source_title": "docs/planning/jev-sidecar-pr0-design.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/planning/jev-sidecar-pr0-design.md"
+  },
+  {
     "date": "2026-09-30",
     "tool": "codex",
     "tool_name": "Codex CLI",
