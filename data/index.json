@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-02",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "Alpine 装 Claude 后补 PATH",
+    "scenario": "在 GitLab CI 的 node:24-alpine3.21 作业里安装 Claude Code 后，脚本一调用 claude 就报找不到命令。这个坑在自定义 before_script 或精简 job 时最容易踩。",
+    "level": "进阶",
+    "file": "tips/2026-10-02-claude-code-claude-code-gitlab-ci-cd.md",
+    "source_title": "Claude Code GitLab CI/CD",
+    "source_url": "https://code.claude.com/docs/en/gitlab-ci-cd.md"
+  },
+  {
     "date": "2026-10-01",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
