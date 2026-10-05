@@ -18,7 +18,8 @@
     "https://learn.chatgpt.com/docs/plugins.md",
     "https://learn.chatgpt.com/docs/cloud.md",
     "https://learn.chatgpt.com/docs/enterprise/usage-limits.md",
-    "https://learn.chatgpt.com/docs/github-action.md"
+    "https://learn.chatgpt.com/docs/github-action.md",
+    "https://learn.chatgpt.com/docs/glossary.md"
   ],
   "hermes-studio": [
     "EKKOLearnAI/hermes-studio:docs/workflow.md",
