@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-06",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "重启后 /context 只是本地历史估算",
+    "scenario": "你刚重启 Hermes Studio，想用 `/context` 判断当前会话离模型上限还有多远，再决定是否压缩。",
+    "level": "专家",
+    "file": "tips/2026-10-06-hermes-studio-docs-ekko-session-commands-md.md",
+    "source_title": "docs/ekko-session-commands.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/ekko-session-commands.md"
+  },
+  {
     "date": "2026-10-05",
     "tool": "codex",
     "tool_name": "Codex CLI",

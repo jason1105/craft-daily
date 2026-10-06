@@ -29,6 +29,7 @@
     "EKKOLearnAI/hermes-studio:docs/opencode-free.md",
     "EKKOLearnAI/hermes-studio:docs/chat-chain-changes/2026-09-17-group-task-plan-cards.md",
     "EKKOLearnAI/hermes-studio:docs/planning/ekko-agent-configuration-pages.md",
-    "EKKOLearnAI/hermes-studio:docs/planning/jev-sidecar-pr0-design.md"
+    "EKKOLearnAI/hermes-studio:docs/planning/jev-sidecar-pr0-design.md",
+    "EKKOLearnAI/hermes-studio:docs/ekko-session-commands.md"
   ]
 }
