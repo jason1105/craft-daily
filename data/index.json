@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-07",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "LSP 无诊断时用 /plugin 查缺失二进制",
+    "scenario": "你装了 `typescript-lsp`，但 Claude 改完 TypeScript 文件后没有出现诊断行，怀疑语言服务器根本没起来。",
+    "level": "进阶",
+    "file": "tips/2026-10-07-claude-code-code-intelligence-plugins.md",
+    "source_title": "Code intelligence plugins",
+    "source_url": "https://code.claude.com/docs/en/plugins/code-intelligence.md"
+  },
+  {
     "date": "2026-10-06",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
