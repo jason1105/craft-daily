@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-09",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "直聊定位：0 是合法坐标，别当空值",
+    "scenario": "你在直聊 Agent 中调用 `hermes_studio_use_mobile_location`，App 回传的坐标位于赤道或本初子午线，但 Agent 把 0 当成缺失而报 `location_invalid_result`。或者 App 未显式声明 wgs84，你希望 Hermes 自动转换，却直接失败。",
+    "level": "专家",
+    "file": "tips/2026-10-09-hermes-studio-docs-chat-chain-changes-2026-08-31-agent-mobile-.md",
+    "source_title": "docs/chat-chain-changes/2026-08-31-agent-mobile-location.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/chat-chain-changes/2026-08-31-agent-mobile-location.md"
+  },
+  {
     "date": "2026-10-08",
     "tool": "codex",
     "tool_name": "Codex CLI",
