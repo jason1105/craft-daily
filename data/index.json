@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-12",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "用 context: fork 隔离 Skill 执行",
+    "scenario": "当某个 Skill 会读很多文件或产生大量中间输出，而你的主会话上下文已经吃紧。你希望它照常执行，但别把过程全塞回当前对话。",
+    "level": "进阶",
+    "file": "tips/2026-10-12-claude-code-extend-claude-code.md",
+    "source_title": "Extend Claude Code",
+    "source_url": "https://code.claude.com/docs/en/features-overview.md"
+  },
+  {
     "date": "2026-10-09",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
