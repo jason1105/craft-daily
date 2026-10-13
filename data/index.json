@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-13",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "CI 临时任务别持久化 Codex 登录",
+    "scenario": "你在共享 CI runner 或临时脚本里跑 `codex exec`，只想要一次性的非交互运行。不要把 agent identity credential 写进 runner 的 Codex CLI auth storage。",
+    "level": "进阶",
+    "file": "tips/2026-10-13-codex-access-tokens.md",
+    "source_title": "Access tokens",
+    "source_url": "https://learn.chatgpt.com/docs/enterprise/access-tokens.md"
+  },
+  {
     "date": "2026-10-12",
     "tool": "claude-code",
     "tool_name": "Claude Code",
