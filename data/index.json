@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-14",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "手动定价别漏 cache read/write",
+    "scenario": "你在自定义 relay 或未收录模型上发现成本总是 unknown，准备在 Usage 页 Model pricing 里手填价格。",
+    "level": "进阶",
+    "file": "tips/2026-10-14-hermes-studio-docs-harness-usage-cost-md.md",
+    "source_title": "docs/harness/usage-cost.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/harness/usage-cost.md"
+  },
+  {
     "date": "2026-10-13",
     "tool": "codex",
     "tool_name": "Codex CLI",
