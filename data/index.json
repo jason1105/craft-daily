@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-15",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "企业版云会话先开 GitHub 连接器",
+    "scenario": "你在 Team/Enterprise 计划下打开 claude.ai/code 想跑云会话，但登录后没有 GitHub 授权按钮，只看到 GitHub access is required for Claude Code cloud sessions。别急着查仓库权限或 Claude GitHub App，先确认组织连接器是否开启。",
+    "level": "进阶",
+    "file": "tips/2026-10-15-claude-code-get-started-with-claude-code-in-the-cloud.md",
+    "source_title": "Get started with Claude Code in the cloud",
+    "source_url": "https://code.claude.com/docs/en/web-quickstart.md"
+  },
+  {
     "date": "2026-10-14",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
