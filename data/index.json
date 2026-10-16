@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-16",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "Mac 合盖远程访问需外接显示器",
+    "scenario": "你用 Mac 笔记本作为 Codex/ChatGPT 远程 host，离开工位后想用手机继续任务。直接合盖会让远程连接断掉，除非按下面方式保持可用。",
+    "level": "进阶",
+    "file": "tips/2026-10-16-codex-remote-connections.md",
+    "source_title": "Remote connections",
+    "source_url": "https://learn.chatgpt.com/docs/remote-connections.md"
+  },
+  {
     "date": "2026-10-15",
     "tool": "claude-code",
     "tool_name": "Claude Code",
