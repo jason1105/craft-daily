@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-19",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "Qoder BYOK 只能走 /model 向导",
+    "scenario": "你想在 Studio 里用 Qoder 的 BYOK 自定义模型，却发现没有 scoped endpoint 注入入口，或者手改 settings.json 不生效。别继续绕配置，先按官方限制走账号向导。",
+    "level": "进阶",
+    "file": "tips/2026-10-19-hermes-studio-docs-native-coding-agents-md.md",
+    "source_title": "docs/native-coding-agents.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/native-coding-agents.md"
+  },
+  {
     "date": "2026-10-16",
     "tool": "codex",
     "tool_name": "Codex CLI",
