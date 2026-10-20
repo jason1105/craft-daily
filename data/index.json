@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-20",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "先 pilot 估算月成本再全量",
+    "scenario": "准备给多个仓库开启 Code Review，需要先给出可解释的月度预算，而不是等默认 After every push 跑完才看账单。用少量代表仓库做 pilot，再反推全量成本。",
+    "level": "进阶",
+    "file": "tips/2026-10-20-claude-code-code-review-costs-and-usage.md",
+    "source_title": "Code Review costs and usage",
+    "source_url": "https://code.claude.com/docs/en/code-review-costs.md"
+  },
+  {
     "date": "2026-10-19",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
