@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-21",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "别信preflight的archiveDir",
+    "scenario": "同一 outputDir 反复扫描并开启 archiveExisting 时，需要把真实归档目录写进审计日志或后续清理。preflight 返回的 archiveDir 只是命名预览，直接使用会指错路径。",
+    "level": "进阶",
+    "file": "tips/2026-10-21-codex-codex-security-typescript-sdk.md",
+    "source_title": "Codex Security TypeScript SDK",
+    "source_url": "https://learn.chatgpt.com/docs/security/sdk.md"
+  },
+  {
     "date": "2026-10-20",
     "tool": "claude-code",
     "tool_name": "Claude Code",
