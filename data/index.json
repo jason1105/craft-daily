@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-22",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "登录 IP 锁死时清锁并重启",
+    "scenario": "自托管 Ekko Studio Web 控制台连续登录失败触发 IP 锁，或默认管理员密码丢失，团队被挡在管理页外。用 CLI 在不重装、不清库的情况下恢复访问。",
+    "level": "进阶",
+    "file": "tips/2026-10-22-hermes-studio-readme-zh-md.md",
+    "source_title": "README_zh.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/README_zh.md"
+  },
+  {
     "date": "2026-10-21",
     "tool": "codex",
     "tool_name": "Codex CLI",
