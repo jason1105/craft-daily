@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-23",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "用空字符串中和无法 unset 的变量",
+    "scenario": "你的 shell profile 导出了 stale 的 CLAUDE_CODE_USE_VERTEX，但你不方便改 profile；你想让它对 provider selection 按未设置处理。",
+    "level": "专家",
+    "file": "tips/2026-10-23-claude-code-environment-variables.md",
+    "source_title": "Environment variables",
+    "source_url": "https://code.claude.com/docs/en/env-vars.md"
+  },
+  {
     "date": "2026-10-22",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
