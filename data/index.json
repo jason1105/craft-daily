@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-27",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "云端批处理需双端能力位同时开启",
+    "scenario": "你在联调云端中转的受邀 Agent 流式输出，房间显示了部分 reasoning 后却可能缺少最终回复。先核对两端能力位，而不是先怀疑 30 秒 acknowledgement 超时。",
+    "level": "进阶",
+    "file": "tips/2026-10-27-hermes-studio-docs-chat-chain-changes-2026-09-05-remote-agent-.md",
+    "source_title": "docs/chat-chain-changes/2026-09-05-remote-agent-event-batching.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/chat-chain-changes/2026-09-05-remote-agent-event-batching.md"
+  },
+  {
     "date": "2026-10-26",
     "tool": "codex",
     "tool_name": "Codex CLI",
