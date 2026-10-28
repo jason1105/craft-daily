@@ -13,7 +13,8 @@
     "https://code.claude.com/docs/en/features-overview.md",
     "https://code.claude.com/docs/en/web-quickstart.md",
     "https://code.claude.com/docs/en/code-review-costs.md",
-    "https://code.claude.com/docs/en/env-vars.md"
+    "https://code.claude.com/docs/en/env-vars.md",
+    "https://code.claude.com/docs/en/llm-gateway-protocol.md"
   ],
   "codex": [
     "https://learn.chatgpt.com/docs/security.md",
