@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-28",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "网关别按完整 URL 匹配推理请求",
+    "scenario": "你正在给公司 LLM 网关写路由或日志过滤规则，Claude Code 以 Anthropic Messages 格式接入。若规则按完整 URL 匹配，带 `?beta=true` 的推理请求容易被漏掉。",
+    "level": "进阶",
+    "file": "tips/2026-10-28-claude-code-claude-code-gateway-compatibility-guide.md",
+    "source_title": "Claude Code gateway compatibility guide",
+    "source_url": "https://code.claude.com/docs/en/llm-gateway-protocol.md"
+  },
+  {
     "date": "2026-10-27",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
