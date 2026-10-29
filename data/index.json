@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-29",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "首条请求点名共享环境，续跑别换线程",
+    "scenario": "你在 Slack 线程里让 @ChatGPT 把仓库改造派给 Codex Cloud，接着想让它补测试、或换个环境重跑。随手换个账号或新开线程追问，就会另起一个 coding task，之前的环境和上下文全丢。",
+    "level": "进阶",
+    "file": "tips/2026-10-29-codex-use-chatgpt-in-slack.md",
+    "source_title": "Use ChatGPT in Slack",
+    "source_url": "https://learn.chatgpt.com/docs/third-party/slack.md"
+  },
+  {
     "date": "2026-10-28",
     "tool": "claude-code",
     "tool_name": "Claude Code",
