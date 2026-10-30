@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-30",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "Group MCP 核对每轮 auth.json",
+    "scenario": "当 Group Coding Agent 的 task-plan/clarification 被 interaction endpoint 拒绝，或长任务疑似 token 过期时，先核对本轮凭证而不是共享 worker 环境。",
+    "level": "专家",
+    "file": "tips/2026-10-30-hermes-studio-docs-chat-chain-changes-2026-09-26-group-mcp-run.md",
+    "source_title": "docs/chat-chain-changes/2026-09-26-group-mcp-run-credentials.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/chat-chain-changes/2026-09-26-group-mcp-run-credentials.md"
+  },
+  {
     "date": "2026-10-29",
     "tool": "codex",
     "tool_name": "Codex CLI",
