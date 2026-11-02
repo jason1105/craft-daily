@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-02",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "用 code . 启动 VS Code 以继承环境变量",
+    "scenario": "你已经在 shell 里设置好了 ANTHROPIC_API_KEY，但打开 VS Code 扩展后仍看到 Not logged in / 登录提示。这通常是因为 VS Code 没有继承你的 shell 环境。",
+    "level": "进阶",
+    "file": "tips/2026-11-02-claude-code-use-claude-code-in-vs-code.md",
+    "source_title": "Use Claude Code in VS Code",
+    "source_url": "https://code.claude.com/docs/en/vs-code.md"
+  },
+  {
     "date": "2026-10-30",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
