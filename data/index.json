@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-03",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "AIRS 失败时改为 Block prompts",
+    "scenario": "安全策略要求所有受覆盖的 Codex 提示在到达模型前都必须获得扫描决策。默认 On AIRS failure 是 Allow prompts，AIRS 不可用时会放行未完成扫描的请求。",
+    "level": "进阶",
+    "file": "tips/2026-11-03-codex-prisma-airs.md",
+    "source_title": "Prisma AIRS",
+    "source_url": "https://learn.chatgpt.com/docs/enterprise/prisma-airs.md"
+  },
+  {
     "date": "2026-11-02",
     "tool": "claude-code",
     "tool_name": "Claude Code",
