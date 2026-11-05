@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-05",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "给状态栏设 refreshInterval",
+    "scenario": "主会话挂着后台 subagents 时，事件驱动更新会静默，状态栏里的时钟或外部 git 状态停更。你需要状态栏在空闲期也按固定节奏刷新。",
+    "level": "进阶",
+    "file": "tips/2026-11-05-claude-code-customize-your-status-line.md",
+    "source_title": "Customize your status line",
+    "source_url": "https://code.claude.com/docs/en/statusline.md"
+  },
+  {
     "date": "2026-11-04",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
