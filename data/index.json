@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-06",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "CI 中用环境变量令牌跑 Codex",
+    "scenario": "在 CI runner 或共享/临时 runner 上执行 headless Codex 任务，不能依赖员工个人账号，也不应把登录凭据落盘。用服务账号访问令牌通过环境变量注入即可无浏览器运行。",
+    "level": "进阶",
+    "file": "tips/2026-11-06-codex-service-accounts.md",
+    "source_title": "Service accounts",
+    "source_url": "https://learn.chatgpt.com/docs/enterprise/service-accounts.md"
+  },
+  {
     "date": "2026-11-05",
     "tool": "claude-code",
     "tool_name": "Claude Code",
