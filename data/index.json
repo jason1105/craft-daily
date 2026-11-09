@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-09",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "旧 runtime 下 /learn 要显式报错",
+    "scenario": "Web UI 已接入 `/learn`，但运行时 Hermes Agent 还没更新到包含 `agent/learn_prompt.py` 的版本。用户输入 `/learn` 时若 bridge 静默透传，看起来只是普通聊天，失败原因很难发现。",
+    "level": "进阶",
+    "file": "tips/2026-11-09-hermes-studio-docs-planning-learn-command-integration-md.md",
+    "source_title": "docs/planning/learn-command-integration.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/planning/learn-command-integration.md"
+  },
+  {
     "date": "2026-11-06",
     "tool": "codex",
     "tool_name": "Codex CLI",
