@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-10",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "用两个 --plugin-dir 联调插件与依赖",
+    "scenario": "你在同一个仓库里同时改一个插件和它依赖的另一个插件（比如共享的 MCP server 插件），想立刻验证改动，而不是每次发版再从 marketplace 装一遍。",
+    "level": "进阶",
+    "file": "tips/2026-11-10-claude-code-plugin-dependencies.md",
+    "source_title": "Plugin dependencies",
+    "source_url": "https://code.claude.com/docs/en/plugins/dependencies.md"
+  },
+  {
     "date": "2026-11-09",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
