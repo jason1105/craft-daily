@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-11",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "run 的 sandbox 会延续到后续轮次",
+    "scenario": "在 Python SDK 驱动的自动化里，你让 Codex 先改工作区，再只读审查 diff。别以为 read_only 只影响审查这一轮——它会把限制带到该线程后续轮次。",
+    "level": "进阶",
+    "file": "tips/2026-11-11-codex-codex-sdk.md",
+    "source_title": "Codex SDK",
+    "source_url": "https://learn.chatgpt.com/docs/codex-sdk.md"
+  },
+  {
     "date": "2026-11-10",
     "tool": "claude-code",
     "tool_name": "Claude Code",
