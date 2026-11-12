@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-12",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "跑插件测试先清 NODE_ENV 和 PORT",
+    "scenario": "在本地或 CI 中运行 DSH 插件相关 vitest 套件时，当前 shell 可能继承了 Studio 服务的 NODE_ENV=production 或 PORT，导致测试行为异常。用 env -u 隔离环境后再执行。",
+    "level": "进阶",
+    "file": "tips/2026-11-12-hermes-studio-docs-planning-dsh-plugin-management-implementati.md",
+    "source_title": "docs/planning/dsh-plugin-management-implementation.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/planning/dsh-plugin-management-implementation.md"
+  },
+  {
     "date": "2026-11-11",
     "tool": "codex",
     "tool_name": "Codex CLI",
