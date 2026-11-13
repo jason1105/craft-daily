@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-13",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "组织级 secret 用 API key",
+    "scenario": "你正把 Claude Code GitHub Action 推广到多个仓库，准备用组织级 Actions secret 统一认证。若沿用个人 OAuth token，生成者订阅一旦变化，所有仓库的 @claude 会一起失效。",
+    "level": "进阶",
+    "file": "tips/2026-11-13-claude-code-claude-code-github-actions.md",
+    "source_title": "Claude Code GitHub Actions",
+    "source_url": "https://code.claude.com/docs/en/github-actions.md"
+  },
+  {
     "date": "2026-11-12",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
