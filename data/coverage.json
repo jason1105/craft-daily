@@ -38,7 +38,8 @@
     "https://learn.chatgpt.com/docs/third-party/slack.md",
     "https://learn.chatgpt.com/docs/enterprise/prisma-airs.md",
     "https://learn.chatgpt.com/docs/enterprise/service-accounts.md",
-    "https://learn.chatgpt.com/docs/codex-sdk.md"
+    "https://learn.chatgpt.com/docs/codex-sdk.md",
+    "https://learn.chatgpt.com/docs/enterprise/windows-deployment.md"
   ],
   "hermes-studio": [
     "EKKOLearnAI/hermes-studio:docs/workflow.md",

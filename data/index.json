@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-16",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "Intune 卸载命令勿用环境变量",
+    "scenario": "在用 Intune 的 Win32 工作流分发离线 MSIX，并为 Codex 配置安装/卸载命令时，卸载字段常被随手写成 %SystemRoot%，结果 Intune 不展开变量导致失败。默认 Windows 目录为 C:\\Windows 的设备可直接用字面 Sysnative 路径规避。",
+    "level": "专家",
+    "file": "tips/2026-11-16-codex-deploy-the-windows-app-and-codex-cli.md",
+    "source_title": "Deploy the Windows app and Codex CLI",
+    "source_url": "https://learn.chatgpt.com/docs/enterprise/windows-deployment.md"
+  },
+  {
     "date": "2026-11-13",
     "tool": "claude-code",
     "tool_name": "Claude Code",
