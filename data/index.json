@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-17",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "移动删除校验 id 与 deleted=true",
+    "scenario": "你正在接移动端日历/提醒单条删除，准备复用批量删除或兼容旧 App 时，先用返回契约和版本门槛卡住。否则很容易把单条删除做成越权或误删。",
+    "level": "进阶",
+    "file": "tips/2026-11-17-hermes-studio-docs-chat-chain-changes-2026-09-05-confirmed-mob.md",
+    "source_title": "docs/chat-chain-changes/2026-09-05-confirmed-mobile-delete.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/chat-chain-changes/2026-09-05-confirmed-mobile-delete.md"
+  },
+  {
     "date": "2026-11-16",
     "tool": "codex",
     "tool_name": "Codex CLI",
