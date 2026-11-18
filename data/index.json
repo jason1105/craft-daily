@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-18",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "定时任务用 Worktree 隔离脏工作区",
+    "scenario": "你在活跃仓库上跑每日代码审查，工作区常有未提交改动，导致每次审查结果被脏状态干扰。",
+    "level": "进阶",
+    "file": "tips/2026-11-18-claude-code-schedule-recurring-tasks-in-claude-code-desktop.md",
+    "source_title": "Schedule recurring tasks in Claude Code Desktop",
+    "source_url": "https://code.claude.com/docs/en/desktop-scheduled-tasks.md"
+  },
+  {
     "date": "2026-11-17",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
