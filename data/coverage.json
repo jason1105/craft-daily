@@ -40,7 +40,8 @@
     "https://learn.chatgpt.com/docs/enterprise/prisma-airs.md",
     "https://learn.chatgpt.com/docs/enterprise/service-accounts.md",
     "https://learn.chatgpt.com/docs/codex-sdk.md",
-    "https://learn.chatgpt.com/docs/enterprise/windows-deployment.md"
+    "https://learn.chatgpt.com/docs/enterprise/windows-deployment.md",
+    "https://learn.chatgpt.com/docs/agent-configuration/subagents.md"
   ],
   "hermes-studio": [
     "EKKOLearnAI/hermes-studio:docs/workflow.md",
