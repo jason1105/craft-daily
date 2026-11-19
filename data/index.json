@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-19",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "固化子代理委派并用 /subagents 巡检",
+    "scenario": "你每次让 Codex 审分支都要手打并行子代理指令，且探索/测试输出把主线程塞满。把原文示例委派指令固化到适用的 `AGENTS.md` 或 skill instructions，后续让 CLI 自动遵循。",
+    "level": "进阶",
+    "file": "tips/2026-11-19-codex-subagents.md",
+    "source_title": "Subagents",
+    "source_url": "https://learn.chatgpt.com/docs/agent-configuration/subagents.md"
+  },
+  {
     "date": "2026-11-18",
     "tool": "claude-code",
     "tool_name": "Claude Code",
