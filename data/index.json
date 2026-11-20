@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-20",
+    "tool": "hermes-studio",
+    "tool_name": "Hermes Studio",
+    "title": "惰性加载 hermes_yaml 适配器",
+    "scenario": "当 Hermes 0.21.5 的 managed Python 没装 PyYAML，bridge 仍直接 `import yaml`，导致 MCP 页返回 HTTP 503 或终端配置刷新失败时。",
+    "level": "进阶",
+    "file": "tips/2026-11-20-hermes-studio-docs-chat-chain-changes-2026-09-27-hermes-yaml-c.md",
+    "source_title": "docs/chat-chain-changes/2026-09-27-hermes-yaml-compatibility.md",
+    "source_url": "https://github.com/EKKOLearnAI/hermes-studio/blob/main/docs/chat-chain-changes/2026-09-27-hermes-yaml-compatibility.md"
+  },
+  {
     "date": "2026-11-19",
     "tool": "codex",
     "tool_name": "Codex CLI",
