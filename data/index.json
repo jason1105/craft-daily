@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-23",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "失败评审用顶层评论重触发",
+    "scenario": "自动 Code Review 超时或失败，或你希望重跑一次但不想让该 PR 从此订阅后续 push 时，需要手动重触发评审。",
+    "level": "进阶",
+    "file": "tips/2026-11-23-claude-code-troubleshoot-code-review.md",
+    "source_title": "Troubleshoot Code Review",
+    "source_url": "https://code.claude.com/docs/en/code-review-troubleshooting.md"
+  },
+  {
     "date": "2026-11-20",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
