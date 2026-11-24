@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-24",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "用 /debug-config 核对下发策略",
+    "scenario": "团队自建 HTTPS 配置服务器给 Codex CLI 分发默认值与强制要求时，发布前需要在测试机确认配置层和策略来源都正确。",
+    "level": "进阶",
+    "file": "tips/2026-11-24-codex-self-host-codex-configuration-for-your-team.md",
+    "source_title": "Self-host Codex configuration for your team",
+    "source_url": "https://learn.chatgpt.com/docs/enterprise/configuration-server.md"
+  },
+  {
     "date": "2026-11-23",
     "tool": "claude-code",
     "tool_name": "Claude Code",
