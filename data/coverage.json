@@ -65,6 +65,7 @@
     "EKKOLearnAI/hermes-studio:docs/planning/learn-command-integration.md",
     "EKKOLearnAI/hermes-studio:docs/planning/dsh-plugin-management-implementation.md",
     "EKKOLearnAI/hermes-studio:docs/chat-chain-changes/2026-09-05-confirmed-mobile-delete.md",
-    "EKKOLearnAI/hermes-studio:docs/chat-chain-changes/2026-09-27-hermes-yaml-compatibility.md"
+    "EKKOLearnAI/hermes-studio:docs/chat-chain-changes/2026-09-27-hermes-yaml-compatibility.md",
+    "EKKOLearnAI/hermes-studio:docs/person-display.md"
   ]
 }
