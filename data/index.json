@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-26",
+    "tool": "claude-code",
+    "tool_name": "Claude Code",
+    "title": "用启动等待毫秒数驯服 MCP 首轮延迟",
+    "scenario": "你的 Agent 启动时挂了多个 MCP server，首轮经常被 pending 的 settings-file 或 plugin server 拖慢，甚至有 stdio server 等到默认 30 秒超时。想按项目或网关环境统一控制首轮最多等多久。",
+    "level": "专家",
+    "file": "tips/2026-11-26-claude-code-connect-to-external-tools-with-mcp.md",
+    "source_title": "Connect to external tools with MCP",
+    "source_url": "https://code.claude.com/docs/en/agent-sdk/mcp.md"
+  },
+  {
     "date": "2026-11-25",
     "tool": "hermes-studio",
     "tool_name": "Hermes Studio",
