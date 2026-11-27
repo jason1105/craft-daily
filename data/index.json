@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-27",
+    "tool": "codex",
+    "tool_name": "Codex CLI",
+    "title": "Codex 内用 Quick chat 找旧会话",
+    "scenario": "你正在桌面 Codex 里调试代码，却想复用之前在 Web 或移动端 ChatGPT 里聊过的上下文；不必切回浏览器，快速找回这些会话继续问。",
+    "level": "进阶",
+    "file": "tips/2026-11-27-codex-use-chatgpt.md",
+    "source_title": "Use ChatGPT",
+    "source_url": "https://learn.chatgpt.com/docs/use-chatgpt.md"
+  },
+  {
     "date": "2026-11-26",
     "tool": "claude-code",
     "tool_name": "Claude Code",
